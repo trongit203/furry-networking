@@ -1,6 +1,52 @@
 
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
+
+// Mock React Native components for web preview
+const View = ({ style, children }) => (
+  <div style={style}>{children}</div>
+);
+
+const Text = ({ style, children }) => (
+  <span style={style}>{children}</span>
+);
+
+const TextInput = ({ style, placeholder, placeholderTextColor }) => (
+  <input 
+    style={style} 
+    placeholder={placeholder}
+    className="text-input"
+  />
+);
+
+const FlatList = ({ data, renderItem, keyExtractor, horizontal, showsHorizontalScrollIndicator, contentContainerStyle }) => {
+  return (
+    <div style={contentContainerStyle}>
+      <div style={{ display: horizontal ? 'flex' : 'block', overflowX: horizontal ? 'auto' : 'visible' }}>
+        {data.map((item, index) => (
+          <div key={keyExtractor ? keyExtractor(item) : index}>
+            {renderItem({ item, index })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const TouchableOpacity = ({ style, children }) => (
+  <button style={{ ...style, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+    {children}
+  </button>
+);
+
+const SafeAreaView = ({ style, children }) => (
+  <div style={style}>{children}</div>
+);
+
+const StyleSheet = {
+  create: (styles) => styles
+};
+
+// Import our components
 import PetCard from '../components/PetCard';
 
 // Dummy data for the PetCard components
@@ -94,16 +140,16 @@ const ScrollableCategories = () => {
       keyExtractor={(item) => item}
       renderItem={({ item, index }) => (
         <TouchableOpacity
-          style={[
-            styles.categoryChip,
-            index === 0 && styles.activeCategory
-          ]}
+          style={{
+            ...styles.categoryChip,
+            ...(index === 0 ? styles.activeCategory : {})
+          }}
         >
           <Text
-            style={[
-              styles.categoryText,
-              index === 0 && styles.activeCategoryText
-            ]}
+            style={{
+              ...styles.categoryText,
+              ...(index === 0 ? styles.activeCategoryText : {})
+            }}
           >
             {item}
           </Text>
@@ -121,44 +167,52 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9fafb',
   },
   header: {
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 8,
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    paddingTop: '12px',
+    paddingBottom: '8px',
   },
   title: {
-    fontSize: 24,
+    fontSize: '24px',
     fontWeight: 'bold',
     color: '#111827',
   },
   searchContainer: {
-    paddingHorizontal: 16,
-    marginBottom: 16,
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    marginBottom: '16px',
   },
   searchInput: {
     backgroundColor: '#f3f4f6',
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    fontSize: 14,
+    borderRadius: '8px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    paddingTop: '10px',
+    paddingBottom: '10px',
+    fontSize: '14px',
   },
   categoriesContainer: {
-    marginBottom: 8,
+    marginBottom: '8px',
   },
   categoriesList: {
-    paddingHorizontal: 12,
+    paddingLeft: '12px',
+    paddingRight: '12px',
   },
   categoryChip: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    paddingTop: '8px',
+    paddingBottom: '8px',
     backgroundColor: '#f3f4f6',
-    borderRadius: 9999,
-    marginHorizontal: 4,
+    borderRadius: '9999px',
+    marginLeft: '4px',
+    marginRight: '4px',
   },
   activeCategory: {
     backgroundColor: '#3b82f6',
   },
   categoryText: {
-    fontSize: 14,
+    fontSize: '14px',
     color: '#6b7280',
   },
   activeCategoryText: {
@@ -166,7 +220,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   listContent: {
-    padding: 16,
+    padding: '16px',
   },
 });
 

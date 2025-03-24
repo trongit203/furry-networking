@@ -1,7 +1,18 @@
 
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
-import { Text } from 'react-native';
+
+// Mock React Native components for web preview
+const View = ({ style, children }) => (
+  <div style={style}>{children}</div>
+);
+
+const Image = ({ source, style, defaultSource }) => (
+  <img src={source.uri || defaultSource} style={style} alt="Avatar" />
+);
+
+const StyleSheet = {
+  create: (styles) => styles
+};
 
 interface AvatarProps {
   src: string;
@@ -41,32 +52,28 @@ export const ProfileAvatar: React.FC<AvatarProps> = ({
   return (
     <View style={styles.container}>
       <View 
-        style={[
-          styles.avatarContainer, 
-          { 
-            width: dimensionSize, 
-            height: dimensionSize,
-            borderWidth: border ? 2 : 0,
-          }
-        ]}
+        style={{
+          ...styles.avatarContainer, 
+          width: dimensionSize, 
+          height: dimensionSize,
+          borderWidth: border ? '2px' : '0',
+        }}
       >
         <Image 
           source={{ uri: src }} 
           style={styles.avatarImage}
-          defaultSource={require('../../../public/placeholder.svg')}
+          defaultSource="/placeholder.svg"
         />
       </View>
       
       {online && (
         <View 
-          style={[
-            styles.onlineIndicator, 
-            { 
-              width: onlineDotSize, 
-              height: onlineDotSize,
-              borderWidth: border ? 2 : 0,
-            }
-          ]}
+          style={{
+            ...styles.onlineIndicator, 
+            width: onlineDotSize, 
+            height: onlineDotSize,
+            borderWidth: border ? '2px' : '0',
+          }}
         >
           <View style={styles.pulseDot} />
         </View>
@@ -80,9 +87,10 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   avatarContainer: {
-    borderRadius: 9999,
+    borderRadius: '9999px',
     overflow: 'hidden',
     borderColor: '#ffffff',
+    borderStyle: 'solid',
   },
   avatarImage: {
     width: '100%',
@@ -92,6 +100,7 @@ const styles = StyleSheet.create({
   fallback: {
     width: '100%',
     height: '100%',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#f3f4f6',
@@ -101,15 +110,16 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     backgroundColor: '#10b981',
-    borderRadius: 9999,
+    borderRadius: '9999px',
     borderColor: '#ffffff',
+    borderStyle: 'solid',
     zIndex: 10,
   },
   pulseDot: {
     position: 'absolute',
     width: '100%',
     height: '100%',
-    borderRadius: 9999,
+    borderRadius: '9999px',
     backgroundColor: 'rgba(16, 185, 129, 0.7)',
     zIndex: 5,
   }

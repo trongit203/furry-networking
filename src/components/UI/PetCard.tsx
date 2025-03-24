@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Heart, MessageCircle, Share2, MoreHorizontal, MapPin } from 'lucide-react';
-import Avatar from '@/components/UI/Avatar';
+import { Avatar } from '@/components/ui/avatar'; // Fixed import to use lowercase ui
 
 interface PetCardProps {
   id: string;
@@ -60,7 +60,9 @@ export const PetCard = ({
       <div className="p-4">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center gap-3">
-            <Avatar src={avatarSrc} alt={username} size="md" />
+            <Avatar className="h-10 w-10">
+              <img src={avatarSrc} alt={username} className="h-full w-full object-cover" />
+            </Avatar>
             <div>
               <h3 className="font-medium text-card-foreground">{username}</h3>
               <div className="flex items-center text-xs text-muted-foreground">

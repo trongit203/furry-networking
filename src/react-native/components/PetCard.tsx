@@ -1,11 +1,42 @@
 
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+
+// Mock React Native components for web preview
+const View = ({ style, children }) => (
+  <div style={style}>{children}</div>
+);
+
+const Text = ({ style, children }) => (
+  <span style={style}>{children}</span>
+);
+
+const Image = ({ source, style, resizeMode }) => (
+  <img 
+    src={source.uri} 
+    style={{ ...style, objectFit: resizeMode === 'cover' ? 'cover' : 'contain' }} 
+    alt="Post" 
+  />
+);
+
+const TouchableOpacity = ({ style, onPress, children }) => (
+  <button 
+    style={{ ...style, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+    onClick={onPress}
+  >
+    {children}
+  </button>
+);
+
+const StyleSheet = {
+  create: (styles) => styles
+};
+
+// Import our components
 import ProfileAvatar from './ProfileAvatar';
 
 // We'll use a placeholder for the icons since we can't directly use Lucide React
 // In a real app, you'd use react-native-vector-icons or another icon library
-const IconPlaceholder = ({ name }: { name: string }) => (
+const IconPlaceholder = ({ name }) => (
   <View style={styles.iconPlaceholder}>
     <Text style={styles.iconText}>{name.charAt(0)}</Text>
   </View>
@@ -94,10 +125,7 @@ export const PetCard = ({
           onPress={handleLike}
         >
           <IconPlaceholder name="Heart" />
-          <Text style={[
-            styles.actionText, 
-            isLiked && styles.likedText
-          ]}>
+          <Text style={isLiked ? {...styles.actionText, ...styles.likedText} : styles.actionText}>
             {likeCount}
           </Text>
         </TouchableOpacity>
@@ -119,94 +147,97 @@ export const PetCard = ({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#ffffff',
-    borderRadius: 12,
+    borderRadius: '12px',
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
-    marginBottom: 16,
-    padding: 16,
+    boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+    marginBottom: '16px',
+    padding: '16px',
   },
   header: {
+    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: '16px',
   },
   userInfo: {
+    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
   },
   userMeta: {
-    marginLeft: 8,
+    marginLeft: '8px',
   },
   username: {
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: '16px',
     color: '#1f2937',
   },
   metaRow: {
+    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
   timestamp: {
-    fontSize: 12,
+    fontSize: '12px',
     color: '#6b7280',
   },
   locationContainer: {
+    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
   content: {
-    fontSize: 14,
+    fontSize: '14px',
     color: '#1f2937',
-    marginBottom: 12,
-    lineHeight: 20,
+    marginBottom: '12px',
+    lineHeight: '20px',
   },
   imageContainer: {
-    borderRadius: 8,
+    borderRadius: '8px',
     overflow: 'hidden',
-    marginBottom: 12,
-    aspectRatio: 4/3,
+    marginBottom: '12px',
+    aspectRatio: '4/3',
   },
   image: {
     width: '100%',
     height: '100%',
   },
   footer: {
+    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderTopWidth: 1,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
     borderTopColor: '#f3f4f6',
-    paddingTop: 12,
-    marginTop: 4,
+    paddingTop: '12px',
+    marginTop: '4px',
   },
   actionButton: {
+    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
   },
   actionText: {
-    fontSize: 14,
+    fontSize: '14px',
     color: '#6b7280',
+    marginLeft: '4px',
   },
   likedText: {
     color: '#ef4444',
   },
   iconPlaceholder: {
-    width: 24,
-    height: 24,
+    width: '24px',
+    height: '24px',
     backgroundColor: '#e5e7eb',
-    borderRadius: 12,
+    borderRadius: '12px',
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 4,
+    marginRight: '4px',
   },
   iconText: {
-    fontSize: 10,
+    fontSize: '10px',
     fontWeight: 'bold',
   },
 });
