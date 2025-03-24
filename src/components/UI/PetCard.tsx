@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Heart, MessageCircle, Share2, MoreHorizontal, MapPin } from 'lucide-react';
-import { Avatar } from '@/components/ui/avatar'; // Fixed casing from UI to ui
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 interface PetCardProps {
   id: string;
@@ -62,7 +61,8 @@ export const PetCard = ({
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10">
-              <img src={avatarSrc} alt={username} className="h-full w-full object-cover" />
+              <AvatarImage src={avatarSrc} alt={username} />
+              <AvatarFallback>{username.charAt(0)}</AvatarFallback>
             </Avatar>
             <div>
               <h3 className="font-medium text-card-foreground">{username}</h3>

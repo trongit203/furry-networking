@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Bell } from 'lucide-react';
 import PetCard from '@/components/UI/PetCard';
-import { Avatar } from '@/components/ui/avatar'; // Fixed import case
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'; // Fixed import case
 import AnimatedLogo from '@/components/UI/AnimatedLogo';
 
 interface Post {
@@ -101,11 +101,13 @@ const Home = () => {
               <Bell size={20} />
               <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
             </button>
-            <Avatar 
-              src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?q=80&w=2670&auto=format&fit=crop" 
-              alt="Your profile" 
-              size="sm" 
-            />
+            <Avatar className="h-8 w-8">
+              <AvatarImage 
+                src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?q=80&w=2670&auto=format&fit=crop" 
+                alt="Your profile" 
+              />
+              <AvatarFallback>U</AvatarFallback>
+            </Avatar>
           </div>
         </div>
       </motion.header>

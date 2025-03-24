@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import Avatar from '@/components/UI/Avatar';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'; // Fixed import casing
 
 const categories = [
   "Dogs", "Cats", "Birds", "Fish", "Small Pets", "Reptiles", "Trainers", "Vets", "Events"
@@ -156,12 +155,10 @@ const Explore = () => {
               className="flex items-center justify-between bg-card rounded-xl p-3 border border-border"
             >
               <div className="flex items-center">
-                <Avatar 
-                  src={profile.image} 
-                  alt={profile.name} 
-                  size="md"
-                  className="mr-3"
-                />
+                <Avatar className="mr-3 h-10 w-10">
+                  <AvatarImage src={profile.image} alt={profile.name} />
+                  <AvatarFallback>{profile.name.charAt(0)}</AvatarFallback>
+                </Avatar>
                 
                 <div>
                   <h3 className="font-medium">{profile.name}</h3>
