@@ -11,7 +11,7 @@ import {
   Bookmark, 
   Heart 
 } from 'lucide-react';
-import { Avatar } from '@/components/UI/Avatar';
+import Avatar from '@/components/UI/Avatar';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {

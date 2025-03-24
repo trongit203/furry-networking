@@ -1,5 +1,5 @@
 
-// This file implements a custom Avatar component that uses shadcn's Avatar under the hood
+// This file implements a custom Avatar component using Radix UI directly
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';

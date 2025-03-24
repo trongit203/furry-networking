@@ -11,7 +11,7 @@ import {
   Users, 
   Tag
 } from 'lucide-react';
-import { Avatar } from '@/components/UI/Avatar';
+import Avatar from '@/components/UI/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
