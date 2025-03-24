@@ -7,43 +7,28 @@ This directory contains React Native components that can be used to build the na
 
 The components in this directory are **mock implementations** that simulate React Native components for web preview purposes. They are NOT actual React Native components that can be used in a native mobile app yet.
 
-## To Create a Real React Native App
+## Building a Native Android App with Capacitor
 
-To build an actual React Native application, you need to:
+This project is now configured to build a native Android app using Capacitor. Follow these steps to build and run the app:
 
-1. Install React Native CLI or use Expo:
-   ```bash
-   npx react-native@latest init PetConnectApp
-   # or with Expo
-   npx create-expo-app PetConnectApp
-   ```
+1. Transfer the project to your own Github repository via the "Export to Github" button.
+2. Git pull the project from your own Github repository.
+3. Run `npm install` to install the dependencies.
+4. Run `npx cap sync` to sync the project to the native platform.
+5. Run `npx cap add android` to add the Android platform.
+6. Run `npm run build` to build the project.
+7. Run `npx cap sync` to sync the built web assets to the Android platform.
+8. Run `npx cap open android` to open the project in Android Studio.
+9. Build and run the app from Android Studio.
 
-2. Copy and adapt these components to use actual React Native components:
-   - Replace our mock components with real React Native imports
-   - Properly convert the styles to React Native StyleSheet objects
-   - Use React Native's platform-specific features
+## iOS Support (Future)
 
-3. Install required dependencies:
-   - react-native
-   - react-native-vector-icons (for icons)
-   - react-navigation (for navigation)
-   - etc.
+For iOS support (coming in the future):
+1. Run `npx cap add ios` to add the iOS platform.
+2. Run `npx cap open ios` to open the project in Xcode.
+3. Build and run the app from Xcode.
 
-## Component Structure
-
-- `App.tsx`: The entry point for the React Native application
-- `components/`: Reusable UI components
-  - `ProfileAvatar.tsx`: Avatar component for user profiles
-  - `PetCard.tsx`: Card component for displaying pet posts
-- `screens/`: Screen components that represent full pages
-  - `ExploreScreen.tsx`: The explore feed screen
-
-## Next Steps for Complete Migration
-
-1. Set up a proper React Native project using React Native CLI or Expo
-2. Replace the mock components with real React Native components
-3. Use platform-specific APIs for things like navigation, images, etc.
-4. Test on Android and iOS devices or emulators
+**Note:** iOS development requires macOS with Xcode installed.
 
 ## Style Conversion Guide
 
