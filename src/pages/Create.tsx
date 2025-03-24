@@ -11,7 +11,7 @@ import {
   Users, 
   Tag
 } from 'lucide-react';
-import Avatar from '@/components/UI/Avatar';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
@@ -98,11 +98,13 @@ const Create = () => {
       <div className="max-w-md mx-auto p-4">
         {/* Author info */}
         <div className="flex items-center mb-4">
-          <Avatar 
-            src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?q=80&w=2670&auto=format&fit=crop" 
-            alt="Your profile" 
-            size="md" 
-          />
+          <Avatar className="h-10 w-10">
+            <AvatarImage 
+              src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?q=80&w=2670&auto=format&fit=crop" 
+              alt="Your profile" 
+            />
+            <AvatarFallback>SM</AvatarFallback>
+          </Avatar>
           <div className="ml-3">
             <div className="font-medium">Sarah & Max</div>
             <div className="flex gap-2 mt-1">
