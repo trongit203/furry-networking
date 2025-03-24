@@ -1,6 +1,6 @@
 
-// This file redirects to the shadcn Avatar component
-import { Avatar as ShadcnAvatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+// This file implements a custom Avatar component that uses shadcn's Avatar under the hood
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import React from 'react';
@@ -54,23 +54,26 @@ export const Avatar: React.FC<AvatarProps> = ({
       className={cn('relative', className)} 
       {...animationProps}
     >
-      <ShadcnAvatar
+      <AvatarPrimitive.Root
         className={cn(
+          'relative flex shrink-0 overflow-hidden rounded-full',
           sizeClasses[size],
           border && 'border-2 border-background',
           ring && 'ring-2 ring-primary/30',
           className
         )}
       >
-        <AvatarImage 
+        <AvatarPrimitive.Image 
           src={src} 
           alt={alt}
-          className="object-cover"
+          className="aspect-square h-full w-full object-cover"
         />
-        <AvatarFallback>
+        <AvatarPrimitive.Fallback
+          className="flex h-full w-full items-center justify-center rounded-full bg-muted"
+        >
           {alt.charAt(0).toUpperCase()}
-        </AvatarFallback>
-      </ShadcnAvatar>
+        </AvatarPrimitive.Fallback>
+      </AvatarPrimitive.Root>
       
       {online && (
         <span className={cn(
