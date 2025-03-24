@@ -11,7 +11,7 @@ import {
   Bookmark, 
   Heart 
 } from 'lucide-react';
-import Avatar from '@/components/UI/Avatar';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
@@ -47,12 +47,14 @@ const Profile = () => {
       {/* Profile Info */}
       <div className="max-w-md mx-auto pt-6 px-4">
         <div className="flex items-center justify-between mb-6">
-          <Avatar 
-            src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?q=80&w=2670&auto=format&fit=crop" 
-            alt="Your profile" 
-            size="xl" 
-            ring
-          />
+          <Avatar className="h-16 w-16 ring-2 ring-primary/30">
+            <AvatarImage 
+              src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?q=80&w=2670&auto=format&fit=crop" 
+              alt="Your profile" 
+              className="aspect-square h-full w-full object-cover"
+            />
+            <AvatarFallback>SM</AvatarFallback>
+          </Avatar>
           
           <div className="flex-1 ml-5">
             <div className="flex items-center gap-6 justify-around">
