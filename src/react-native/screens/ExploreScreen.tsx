@@ -32,8 +32,11 @@ const FlatList = ({ data, renderItem, keyExtractor, horizontal, showsHorizontalS
   );
 };
 
-const TouchableOpacity = ({ style, children }) => (
-  <button style={{ ...style, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+const TouchableOpacity = ({ style, children, onPress }) => (
+  <button 
+    style={{ ...style, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+    onClick={onPress}
+  >
     {children}
   </button>
 );
@@ -123,6 +126,8 @@ const ExploreScreen = () => {
             location={item.location}
           />
         )}
+        horizontal={false}
+        showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
       />
     </SafeAreaView>
@@ -135,7 +140,7 @@ const ScrollableCategories = () => {
   
   return (
     <FlatList
-      horizontal
+      horizontal={true}
       data={categories}
       keyExtractor={(item) => item}
       renderItem={({ item, index }) => (
@@ -144,6 +149,7 @@ const ScrollableCategories = () => {
             ...styles.categoryChip,
             ...(index === 0 ? styles.activeCategory : {})
           }}
+          onPress={() => {}}
         >
           <Text
             style={{

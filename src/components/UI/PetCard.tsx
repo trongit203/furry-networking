@@ -1,8 +1,9 @@
+
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Heart, MessageCircle, Share2, MoreHorizontal, MapPin } from 'lucide-react';
-import { Avatar } from '@/components/ui/avatar'; // Fixed import to use lowercase ui
+import { Avatar } from '@/components/ui/avatar'; // Fixed casing from UI to ui
 
 interface PetCardProps {
   id: string;

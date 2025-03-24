@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Bell } from 'lucide-react';
 import PetCard from '@/components/UI/PetCard';
-import Avatar from '@/components/UI/Avatar';
+import { Avatar } from '@/components/ui/avatar'; // Fixed import case
 import AnimatedLogo from '@/components/UI/AnimatedLogo';
 
 interface Post {

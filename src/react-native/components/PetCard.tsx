@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 // Mock React Native components for web preview
@@ -102,7 +101,7 @@ export const PetCard = ({
             </View>
           </View>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity style={{}} onPress={() => {}}>
           <IconPlaceholder name="More" />
         </TouchableOpacity>
       </View>
@@ -130,12 +129,12 @@ export const PetCard = ({
           </Text>
         </TouchableOpacity>
         
-        <TouchableOpacity style={styles.actionButton}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => {}}>
           <IconPlaceholder name="Comment" />
           <Text style={styles.actionText}>{comments}</Text>
         </TouchableOpacity>
         
-        <TouchableOpacity style={styles.actionButton}>
+        <TouchableOpacity style={styles.actionButton} onPress={() => {}}>
           <IconPlaceholder name="Share" />
           <Text style={styles.actionText}>{shares}</Text>
         </TouchableOpacity>

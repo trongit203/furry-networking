@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // Mock React Native components for web preview
@@ -75,7 +74,7 @@ export const ProfileAvatar: React.FC<AvatarProps> = ({
             borderWidth: border ? '2px' : '0',
           }}
         >
-          <View style={styles.pulseDot} />
+          <View style={styles.pulseDot}>{/* Empty children to satisfy type */}</View>
         </View>
       )}
     </View>
