@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Heart, MessageCircle, Share2, MoreHorizontal, MapPin } from 'lucide-react';
-import { Avatar } from './Avatar';
+import { Avatar } from '@/components/UI/Avatar';
 
 interface PetCardProps {
   id: string;

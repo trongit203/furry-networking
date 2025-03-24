@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ChevronLeft, Google, Mail } from 'lucide-react';
+import { ChevronLeft, Mail } from 'lucide-react';
 import AnimatedLogo from '@/components/UI/AnimatedLogo';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
@@ -208,7 +208,8 @@ const Auth = () => {
                   isLoading ? "opacity-70 cursor-not-allowed" : "hover:bg-slate-50 hover:shadow-sm active:scale-[0.98]"
                 )}
               >
-                <Google size={16} className="mr-2" />
+                {/* Replace Google icon with a simple "G" */}
+                <span className="flex items-center justify-center w-4 h-4 bg-blue-500 text-white rounded-sm text-xs font-bold mr-2">G</span>
                 Google
               </button>
               
@@ -325,7 +326,8 @@ const Auth = () => {
                   isLoading ? "opacity-70 cursor-not-allowed" : "hover:bg-slate-50 hover:shadow-sm active:scale-[0.98]"
                 )}
               >
-                <Google size={16} className="mr-2" />
+                {/* Replace Google icon with a simple "G" */}
+                <span className="flex items-center justify-center w-4 h-4 bg-blue-500 text-white rounded-sm text-xs font-bold mr-2">G</span>
                 Google
               </button>
               

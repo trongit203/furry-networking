@@ -1,7 +1,9 @@
 
-import React from 'react';
+// This file redirects to the shadcn Avatar component
+import { Avatar as ShadcnAvatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 interface AvatarProps {
   src: string;
@@ -52,25 +54,23 @@ export const Avatar: React.FC<AvatarProps> = ({
       className={cn('relative', className)} 
       {...animationProps}
     >
-      <div
+      <ShadcnAvatar
         className={cn(
-          'relative rounded-full overflow-hidden bg-muted',
           sizeClasses[size],
           border && 'border-2 border-background',
           ring && 'ring-2 ring-primary/30',
           className
         )}
       >
-        <img
-          src={src}
+        <AvatarImage 
+          src={src} 
           alt={alt}
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = 'https://via.placeholder.com/150?text=' + alt.charAt(0).toUpperCase();
-          }}
+          className="object-cover"
         />
-      </div>
+        <AvatarFallback>
+          {alt.charAt(0).toUpperCase()}
+        </AvatarFallback>
+      </ShadcnAvatar>
       
       {online && (
         <span className={cn(
